@@ -20,9 +20,9 @@ public class PlayerController : MonoBehaviour
     public int healthRestore = 5;
 
     [Header("Movement Settings")]
-    public float speed = 15.0f;
-    public float sprintMultiplier = 2.5f;
-    public float jumpHeight = 5.0f;
+    public float speed = 10.0f;
+    public float sprintMultiplier = 2f;
+    public float jumpHeight = 10.0f;
     public float groundDetectDistance = 1f;
     public int jumps = 2;
     public int jumpsMax = 2;
@@ -118,9 +118,16 @@ public class PlayerController : MonoBehaviour
             temp.x = verticalMove * speed;
 
         if (sprintMode)
+        {
             temp.x = verticalMove * speed * sprintMultiplier;
-
-        temp.z = horizontalMove * speed;
+            temp.z = horizontalMove * speed * sprintMultiplier;
+        } else
+        {
+            temp.x = verticalMove * speed;
+            temp.z = horizontalMove * speed;
+        }
+            
+       
 
         if (Physics.Raycast(transform.position, -transform.up, groundDetectDistance))
         {
@@ -155,8 +162,6 @@ public class PlayerController : MonoBehaviour
         {
             other.gameObject.transform.SetPositionAndRotation(weaponSlot.position, weaponSlot.rotation);
             other.gameObject.transform.SetParent(weaponSlot);
-
         }
-
     }
 }

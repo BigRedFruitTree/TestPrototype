@@ -252,7 +252,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.37, y: 0.93, z: -7.19}
-  m_LocalScale: {x: 1.5, y: 0.1, z: 2}
+  m_LocalScale: {x: 2, y: 0.1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1319,9 +1319,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2102936816}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 6
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1446,16 +1446,16 @@ MonoBehaviour:
   health: 5
   maxHealth: 5
   healthRestore: 5
-  speed: 15
-  sprintMultiplier: 2.5
-  jumpHeight: 5
+  speed: 8
+  sprintMultiplier: 1.8
+  jumpHeight: 6
   groundDetectDistance: 1
   jumps: 2
   jumpsMax: 2
   sprintMode: 0
   isGrounded: 1
-  stamina: 150
-  maxStamina: 150
+  stamina: 200
+  maxStamina: 200
   mouseSensitivity: 2
   Xsensitivity: 2
   Ysensitivity: 2
@@ -1563,7 +1563,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.34, y: 1.03, z: 6.28}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
