@@ -6,12 +6,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    
+
     Rigidbody myRB;
     public Camera playerCam;
     Transform cameraHolder;
 
     Vector2 camRotation;
+    public Transform weaponSlot;
 
     [Header("Player Stats")]
     public int health = 5;
@@ -48,112 +49,114 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-       
-        
+        playerCam.transform.position = cameraHolder.position;
+
+        if (GameOver == false)
+        {
+
+            camRotation.x += Input.GetAxisRaw("Mouse X") * mouseSensitivity;
+            camRotation.y += Input.GetAxisRaw("Mouse Y") * mouseSensitivity;
+
+            camRotation.y = Mathf.Clamp(camRotation.y, -camRotationLimit, camRotationLimit);
 
 
+            playerCam.transform.rotation = Quaternion.Euler(-camRotation.y, camRotation.x, 0);
+            transform.localRotation = Quaternion.AngleAxis(camRotation.x, Vector3.up);
 
-            playerCam.transform.position = cameraHolder.position;
 
-            if (GameOver == false)
+        }
+
+        Vector3 temp = myRB.velocity;
+
+        float verticalMove = Input.GetAxisRaw("Vertical");
+        float horizontalMove = Input.GetAxisRaw("Horizontal");
+
+        if (Input.GetKey(KeyCode.LeftShift) && stamina > 0)
+        {
+            if (stamina > 0)
             {
 
-                camRotation.x += Input.GetAxisRaw("Mouse X") * mouseSensitivity;
-                camRotation.y += Input.GetAxisRaw("Mouse Y") * mouseSensitivity;
-
-                camRotation.y = Mathf.Clamp(camRotation.y, -camRotationLimit, camRotationLimit);
-
-
-                playerCam.transform.rotation = Quaternion.Euler(-camRotation.y, camRotation.x, 0);
-                transform.localRotation = Quaternion.AngleAxis(camRotation.x, Vector3.up);
-
-
-            }
-
-            Vector3 temp = myRB.velocity;
-
-            float verticalMove = Input.GetAxisRaw("Vertical");
-            float horizontalMove = Input.GetAxisRaw("Horizontal");
-
-            if (Input.GetKey(KeyCode.LeftShift) && stamina > 0)
-            {
-                if (stamina > 0)
-                {
-                   
-                    sprintMode = true;
-                }
-                else
-                    sprintMode = false;
-
-
-            }
-
-            if (Input.GetKeyUp(KeyCode.LeftShift))
-            {
-                sprintMode = false;
-            }
-
-            if (sprintMode == true)
-                stamina--;
-
-            if (stamina < 0)
-                stamina = 0;
-
-            if (stamina == 0)
-                sprintMode = false;
-
-            if (sprintMode == false)
-            {
-                stamina++;
-            }
-
-            if (stamina > maxStamina)
-                stamina = maxStamina;
-
-
-
-            if (!sprintMode)
-                temp.x = verticalMove * speed;
-
-            if (sprintMode)
-                temp.x = verticalMove * speed * sprintMultiplier;
-
-            temp.z = horizontalMove * speed;
-
-            if (Physics.Raycast(transform.position, -transform.up, groundDetectDistance))
-            {
-                jumps = jumpsMax;
-
-                isGrounded = true;
+                sprintMode = true;
             }
             else
-                isGrounded = false;
+                sprintMode = false;
+
+
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            sprintMode = false;
+        }
+
+        if (sprintMode == true)
+            stamina--;
+
+        if (stamina < 0)
+            stamina = 0;
+
+        if (stamina == 0)
+            sprintMode = false;
+
+        if (sprintMode == false)
+        {
+            stamina++;
+        }
+
+        if (stamina > maxStamina)
+            stamina = maxStamina;
 
 
 
-            if (Input.GetKeyDown(KeyCode.Space) && jumps > 0 && GameOver == false)
-            {
-                temp.y = jumpHeight;
-                jumps--;
-            }
+        if (!sprintMode)
+            temp.x = verticalMove * speed;
 
-            myRB.velocity = (temp.x * transform.forward) + (temp.z * transform.right) + (temp.y * transform.up);
+        if (sprintMode)
+            temp.x = verticalMove * speed * sprintMultiplier;
 
-            if (health < 0)
-                health = 0;
+        temp.z = horizontalMove * speed;
 
-            if (health == 0)
-                GameOver = true;
+        if (Physics.Raycast(transform.position, -transform.up, groundDetectDistance))
+        {
+            jumps = jumpsMax;
 
-        
+            isGrounded = true;
+        }
+        else
+            isGrounded = false;
+
+
+
+        if (Input.GetKeyDown(KeyCode.Space) && jumps > 0 && GameOver == false)
+        {
+            temp.y = jumpHeight;
+            jumps--;
+        }
+
+        myRB.velocity = (temp.x * transform.forward) + (temp.z * transform.right) + (temp.y * transform.up);
+
+        if (health < 0)
+            health = 0;
+
+        if (health == 0)
+            GameOver = true;
+
+
     }
-    
-  
+    private void OnTriggerEnter(Collider other)
+    {
+        if ((other.gameObject.tag == "Weapon"))
+        {
+            other.gameObject.transform.SetPositionAndRotation(weaponSlot.position, weaponSlot.rotation);
+            other.gameObject.transform.SetParent(weaponSlot);
 
+        }
+
+    }
 }
