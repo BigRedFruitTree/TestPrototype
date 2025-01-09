@@ -1,12 +1,22 @@
 public class Node
 {
-    public int data;
-    public Node next;
+    public int Data;
+    public Node Next;
 
     public Node(int data)
     {
-        this.data = data;
-        this.next = null;
+        Data = data;
+        Next = null;
+    }
 
+    public void Insert(int value, Node Head)
+    {
+        Node searchNode = Head;
+        while (searchNode.Next != null)
+        {
+            searchNode = searchNode.Next;
+        }
+        searchNode.Next = new Node(1);
+        
     }
 }
