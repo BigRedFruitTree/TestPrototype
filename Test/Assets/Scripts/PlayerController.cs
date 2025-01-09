@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
-    Rigidbody myRB;
+    public GameObject PlayerObject;
+    private Rigidbody myRB;
     public Camera playerCam;
     Transform cameraHolder;
 
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 10.0f;
     public float sprintMultiplier = 2f;
     public float jumpHeight = 10.0f;
-    public float groundDetectDistance = 1f;
+    public float groundDetectDistance = 1.5f;
     public int jumps = 2;
     public int jumpsMax = 2;
     public bool sprintMode = false;
@@ -48,7 +48,6 @@ public class PlayerController : MonoBehaviour
         camRotation = Vector2.zero;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-
 
     }
 
@@ -127,19 +126,6 @@ public class PlayerController : MonoBehaviour
             temp.z = horizontalMove * speed;
         }
             
-       
-
-        if (Physics.Raycast(transform.position, -transform.up, groundDetectDistance))
-        {
-            jumps = jumpsMax;
-
-            isGrounded = true;
-        }
-        else
-            isGrounded = false;
-
-
-
         if (Input.GetKeyDown(KeyCode.Space) && jumps > 0 && GameOver == false)
         {
             temp.y = jumpHeight;
@@ -153,8 +139,6 @@ public class PlayerController : MonoBehaviour
 
         if (health == 0)
             GameOver = true;
-
-
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -162,6 +146,22 @@ public class PlayerController : MonoBehaviour
         {
             other.gameObject.transform.SetPositionAndRotation(weaponSlot.position, weaponSlot.rotation);
             other.gameObject.transform.SetParent(weaponSlot);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Floor")
+        {
+            jumps = jumpsMax;
+            isGrounded = true;
+        } 
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Floor")
+        {
+            isGrounded = false;
         }
     }
 }

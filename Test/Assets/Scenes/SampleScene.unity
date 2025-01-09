@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 36254343}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.01, y: -0.471, z: 1.201}
+  m_LocalPosition: {x: 0.01, y: -0.498, z: 1.201}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 636749932}
   m_Layer: 0
   m_Name: floor
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1441,6 +1441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f38bd363a72b214ead35cde565afaed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerObject: {fileID: 2102936816}
   playerCam: {fileID: 963194227}
   weaponSlot: {fileID: 36254344}
   health: 5
