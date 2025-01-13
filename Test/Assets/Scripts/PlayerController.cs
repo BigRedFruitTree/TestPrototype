@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     Vector2 camRotation;
     public Transform weaponSlot;
 
+    private LinkedList weaponList;
+
     [Header("Player Stats")]
     public int health = 5;
     public int maxHealth = 5;
@@ -48,6 +50,10 @@ public class PlayerController : MonoBehaviour
         camRotation = Vector2.zero;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        weaponList = new LinkedList();
+        weaponList.Insert(1);
+        weaponList.Insert(2);
+        weaponList.Insert(3);
 
     }
 
