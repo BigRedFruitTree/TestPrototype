@@ -11,15 +11,4 @@ public class Node
         Data = data;
         Next = null;
     }
-
-    public void Insert(int value, Node Head)
-    {
-        Node searchNode = Head;
-        while (searchNode.Next != null)
-        {
-            searchNode = searchNode.Next;
-        }
-        searchNode.Next = new Node(1);
-       
-    }
 }
