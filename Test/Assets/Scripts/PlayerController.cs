@@ -16,6 +16,11 @@ public class PlayerController : MonoBehaviour
 
     private LinkedList weaponList;
 
+    [Header("Weapons")]
+    public GameObject melee;
+    public GameObject ranged;
+    public GameObject sheild;
+
     [Header("Player Stats")]
     public int health = 5;
     public int maxHealth = 5;
@@ -54,7 +59,15 @@ public class PlayerController : MonoBehaviour
         weaponList.Insert(1);
         weaponList.Insert(2);
         weaponList.Insert(3);
-
+        melee.gameObject.transform.SetPositionAndRotation(weaponSlot.position, weaponSlot.rotation);
+        melee.gameObject.transform.SetParent(weaponSlot);
+        ranged.gameObject.transform.SetPositionAndRotation(weaponSlot.position, weaponSlot.rotation);
+        ranged.gameObject.transform.SetParent(weaponSlot);
+        sheild.gameObject.transform.SetPositionAndRotation(weaponSlot.position, weaponSlot.rotation);
+        sheild.gameObject.transform.SetParent(weaponSlot);
+        melee.SetActive(false);
+        ranged.SetActive(false);
+        sheild.SetActive(false);
     }
 
     // Update is called once per frame
@@ -116,8 +129,6 @@ public class PlayerController : MonoBehaviour
         if (stamina > maxStamina)
             stamina = maxStamina;
 
-
-
         if (!sprintMode)
             temp.x = verticalMove * speed;
 
@@ -145,12 +156,18 @@ public class PlayerController : MonoBehaviour
         if (health == 0)
             GameOver = true;
     }
-    private void OnTriggerEnter(Collider other)
+
+    public void SetWeapon(int index)
     {
-        if ((other.gameObject.tag == "Weapon"))
+        int intToSet = weaponList.GetWeaponAtIndex(index);
+    }
+
+    public void CycleWeapons()
+    {
+        int count = weaponList.Count();
+        for (int i = 0; i < count; i++)
         {
-            other.gameObject.transform.SetPositionAndRotation(weaponSlot.position, weaponSlot.rotation);
-            other.gameObject.transform.SetParent(weaponSlot);
+            SetWeapon(i);
         }
     }
 
