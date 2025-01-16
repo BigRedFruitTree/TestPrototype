@@ -4,6 +4,7 @@ public class LinkedList
 {
     public Node head;
     public int weapon;
+    public PlayerController pc;
     
     public void Insert(int weapon)
     {
@@ -18,7 +19,6 @@ public class LinkedList
             while (searchNode.Next != null)
             {
                 searchNode = searchNode.Next;
-                Debug.Log("Low teir Gyatt");
             }
             searchNode.Next = new Node(1);
         }
@@ -33,10 +33,12 @@ public class LinkedList
         {
             if(count == index)
             {
+                Debug.Log("Low teir Gyatt");
                 return current.Data;
             }
             count++;
             current = current.Next;
+            
         }
         Debug.LogWarning("L rizz no aura");
         return index;

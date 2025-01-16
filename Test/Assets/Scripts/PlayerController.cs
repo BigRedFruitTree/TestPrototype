@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public GameObject melee;
     public GameObject ranged;
     public GameObject sheild;
+    public int weaponID = 1;
 
     [Header("Player Stats")]
     public int health = 5;
