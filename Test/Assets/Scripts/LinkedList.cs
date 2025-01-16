@@ -13,6 +13,7 @@ public class LinkedList
         if(head == null)
         {
             head = newNode;
+            Debug.Log("grimace shake");
         } else
         {
             Node searchNode = head;
@@ -33,7 +34,7 @@ public class LinkedList
         {
             if(count == index)
             {
-                Debug.Log("Low teir Gyatt");
+                Debug.Log("0 Gyatt");
                 return current.Data;
             }
             count++;

@@ -104,8 +104,6 @@ public class PlayerController : MonoBehaviour
             }
             else
                 sprintMode = false;
-
-
         }
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
@@ -161,6 +159,13 @@ public class PlayerController : MonoBehaviour
     public void SetWeapon(int index)
     {
         int intToSet = weaponList.GetWeaponAtIndex(index);
+        Debug.Log("COOKING!!");
+
+        if (intToSet == 1)
+        {
+            melee.SetActive(true);
+
+        }
     }
 
     public void CycleWeapons()

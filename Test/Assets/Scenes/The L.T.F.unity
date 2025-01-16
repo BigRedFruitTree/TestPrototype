@@ -663,7 +663,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734887425}
   serializedVersion: 4
-  m_Mass: 6
+  m_Mass: 200
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -798,7 +798,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 787269717}
   serializedVersion: 4
-  m_Mass: 5
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -2235,6 +2235,7 @@ MonoBehaviour:
   melee: {fileID: 1556871713}
   ranged: {fileID: 2131862384}
   sheild: {fileID: 176757383}
+  weaponID: 1
   health: 5
   maxHealth: 5
   healthRestore: 5
