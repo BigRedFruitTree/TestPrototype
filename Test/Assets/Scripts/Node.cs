@@ -3,11 +3,19 @@ using UnityEngine;
 public class Node
 {
     public int Data;
-    public Node Next;
+    public Node next;
 
     public Node(int data)
     {
         Data = data;
-        Next = null;
+        next = null;
+
+        Node first = new Node(2);
+        Node second = new Node(3);
+        Node last = new Node(4);
+
+        first.next = second;
+        second.next = last;
+        last.next = first;
     }
 }

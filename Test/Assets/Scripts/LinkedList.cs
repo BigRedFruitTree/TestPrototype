@@ -13,11 +13,11 @@ public class LinkedList
         } else
         {
             Node searchNode = head;
-            while (searchNode.Next != null)
+            while (searchNode.next != null)
             {
-                searchNode = searchNode.Next;
+                searchNode = searchNode.next;
             }
-            searchNode.Next = newNode;
+            searchNode.next = newNode;
         }
     }
 
@@ -35,7 +35,7 @@ public class LinkedList
                 return current.Data;
             }
             count++;
-            current = current.Next;
+            current = current.next;
             
         }
         Debug.LogWarning("L rizz no aura");
@@ -50,7 +50,7 @@ public class LinkedList
         while (current != null)
         {
             count++;
-            current = current.Next;
+            current = current.next;
         }
         return count;
     }

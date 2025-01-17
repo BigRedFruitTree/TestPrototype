@@ -57,9 +57,6 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         weaponList = new LinkedList();
-        weaponList.Insert(1);
-        weaponList.Insert(2);
-        weaponList.Insert(3);
         melee.gameObject.transform.SetPositionAndRotation(weaponSlot.position, weaponSlot.rotation);
         melee.gameObject.transform.SetParent(weaponSlot);
         ranged.gameObject.transform.SetPositionAndRotation(weaponSlot.position, weaponSlot.rotation);
@@ -69,7 +66,6 @@ public class PlayerController : MonoBehaviour
         melee.SetActive(false);
         ranged.SetActive(false);
         sheild.SetActive(false);
-        SetWeapon(0);
     }
 
     // Update is called once per frame
@@ -157,29 +153,6 @@ public class PlayerController : MonoBehaviour
             GameOver = true;
     }   
 
-    public void SetWeapon(int index)
-    {
-        int intToSet = weaponList.GetWeaponAtIndex(index);
-
-        if(intToSet == 1)
-        {
-            melee.SetActive(true);
-        }
-        else
-        {
-            melee.SetActive(false);
-        }
-    }
-
-    public void CycleWeapons()
-    {
-        int count = weaponList.Count();
-        for (int i = 0; i < count; i++)
-        {
-            SetWeapon(i);
-            Debug.Log(count);
-        }
-    }
 
     private void OnCollisionEnter(Collision collision)
     {
