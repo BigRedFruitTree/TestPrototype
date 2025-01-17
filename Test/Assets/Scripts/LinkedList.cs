@@ -9,11 +9,9 @@ public class LinkedList
     public void Insert(int weapon)
     {
         Node newNode = new Node(weapon);
-        Debug.Log("Low Taper Fade");
         if(head == null)
         {
             head = newNode;
-            Debug.Log("grimace shake");
         } else
         {
             Node searchNode = head;
