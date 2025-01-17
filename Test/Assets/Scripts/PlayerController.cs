@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour
         melee.SetActive(false);
         ranged.SetActive(false);
         sheild.SetActive(false);
+        SetWeapon(0);
     }
 
     // Update is called once per frame
@@ -154,17 +155,19 @@ public class PlayerController : MonoBehaviour
 
         if (health == 0)
             GameOver = true;
-    }
+    }   
 
     public void SetWeapon(int index)
     {
         int intToSet = weaponList.GetWeaponAtIndex(index);
-        Debug.Log("COOKING!!");
 
-        if (intToSet == 1)
+        if(intToSet == 1)
         {
             melee.SetActive(true);
-
+        }
+        else
+        {
+            melee.SetActive(false);
         }
     }
 
@@ -174,6 +177,7 @@ public class PlayerController : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             SetWeapon(i);
+            Debug.Log(count);
         }
     }
 

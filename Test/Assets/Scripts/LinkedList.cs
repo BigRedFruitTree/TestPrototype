@@ -3,8 +3,6 @@ using UnityEngine;
 public class LinkedList
 {
     public Node head;
-    public int weapon;
-    public PlayerController pc;
     
     public void Insert(int weapon)
     {
@@ -19,7 +17,7 @@ public class LinkedList
             {
                 searchNode = searchNode.Next;
             }
-            searchNode.Next = new Node(1);
+            searchNode.Next = newNode;
         }
     }
 
@@ -33,6 +31,7 @@ public class LinkedList
             if(count == index)
             {
                 Debug.Log("0 Gyatt");
+                count = 0;
                 return current.Data;
             }
             count++;
