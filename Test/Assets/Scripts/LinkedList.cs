@@ -2,56 +2,31 @@ using UnityEngine;
 
 public class LinkedList
 {
-    public Node head;
-    
-    public void Insert(int weapon)
+
+    public static Node InsertAtBeginning(Node last, int value)
     {
-        Node newNode = new Node(weapon);
-        if(head == null)
+        Node newNode = new Node(value);
+
+        if (last == null)
         {
-            head = newNode;
-        } else
-        {
-            Node searchNode = head;
-            while (searchNode.next != null)
-            {
-                searchNode = searchNode.next;
-            }
-            searchNode.next = newNode;
+            newNode.next = newNode;
+            return newNode;
         }
+
+        newNode.next = last.next;
+        last.next = newNode;
+
+        return last;
     }
 
-    public int GetWeaponAtIndex(int index)
+    public int Main (int weapon)
     {
-        Node current = head;
-        int count = 0;
+        Node first = new Node(1);
+        first.next = new Node(2);
+        first.next.next = new Node(3);
+        Node last = first.next.next;
+        last.next = first;
 
-        while (current != null)
-        {
-            if(count == index)
-            {
-                Debug.Log("0 Gyatt");
-                count = 0;
-                return current.Data;
-            }
-            count++;
-            current = current.next;
-            
-        }
-        Debug.LogWarning("L rizz no aura");
-        return index;
-    }
-
-    public int Count()
-    {
-        int count = 0;
-        Node current = head;
-
-        while (current != null)
-        {
-            count++;
-            current = current.next;
-        }
-        return count;
+        return weapon;
     }
 }
