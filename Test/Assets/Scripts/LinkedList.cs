@@ -1,25 +1,36 @@
+using System;
 using UnityEngine;
 
 public class LinkedList
 {
-
-    public static Node InsertAtBeginning(Node last, int value)
+    public bool Search(Node last, int key)
     {
-        Node newNode = new Node(value);
-
         if (last == null)
         {
-            newNode.next = newNode;
-            return newNode;
+          return false;
         }
 
-        newNode.next = last.next;
-        last.next = newNode;
+        Node head = last.next;
+        Node curr = head;
 
-        return last;
+        while (curr != last)
+        {
+          if (curr.data == key)
+          {
+            return true;
+          }
+            curr = curr.next;
+        }
+
+        if (last.data == key)
+        {
+           return true;
+        }
+          return false;
     }
 
-    public int Main (int weapon)
+
+    public int Main(int weapon)
     {
         Node first = new Node(1);
         first.next = new Node(2);
@@ -27,6 +38,8 @@ public class LinkedList
         Node last = first.next.next;
         last.next = first;
 
+        Debug.Log("weapon" + weapon);
         return weapon;
     }
+
 }

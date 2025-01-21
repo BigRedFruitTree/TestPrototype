@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
     public float Ysensitivity = 2.0f;
     public float camRotationLimit = 90f;
     public bool GameOver = false;
+    private Node last;
 
     // Start is called before the first frame update
     void Start()
@@ -57,15 +58,16 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         weaponList = new LinkedList();
+        weaponList.Main(1);
+        weaponList.Main(2);
+        weaponList.Main(3);
         melee.gameObject.transform.SetPositionAndRotation(weaponSlot.position, weaponSlot.rotation);
         melee.gameObject.transform.SetParent(weaponSlot);
         ranged.gameObject.transform.SetPositionAndRotation(weaponSlot.position, weaponSlot.rotation);
         ranged.gameObject.transform.SetParent(weaponSlot);
         sheild.gameObject.transform.SetPositionAndRotation(weaponSlot.position, weaponSlot.rotation);
         sheild.gameObject.transform.SetParent(weaponSlot);
-        melee.SetActive(false);
-        ranged.SetActive(false);
-        sheild.SetActive(false);
+        SetWeapon(1);
     }
 
     // Update is called once per frame
@@ -151,7 +153,28 @@ public class PlayerController : MonoBehaviour
 
         if (health == 0)
             GameOver = true;
-    }   
+    }
+
+    public void SetWeapon(int index)
+    {
+        if (weaponList.Search(last, 1) == true)
+        {
+            melee.SetActive(true);
+        }
+        if (weaponList.Search(last, 2) == true)
+        {
+            ranged.SetActive(true);
+        }
+        if (weaponList.Search(last, 3) == true)
+        {
+            sheild.SetActive(true);
+        }
+    }
+
+    public void CycleNode()
+    {
+        
+    }
 
 
     private void OnCollisionEnter(Collision collision)
@@ -168,5 +191,10 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = false;
         }
+    }
+
+    IEnumerator WaitTime()
+    {
+        yield return new WaitForSeconds(2);
     }
 }
