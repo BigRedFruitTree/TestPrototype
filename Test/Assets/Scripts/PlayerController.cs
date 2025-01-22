@@ -160,14 +160,17 @@ public class PlayerController : MonoBehaviour
         if (weaponList.Search(last, 1) == true)
         {
             melee.SetActive(true);
+            Debug.Log("1");
         }
         if (weaponList.Search(last, 2) == true)
         {
             ranged.SetActive(true);
+            Debug.Log("2");
         }
         if (weaponList.Search(last, 3) == true)
         {
             sheild.SetActive(true);
+            Debug.Log("3");
         }
     }
 
