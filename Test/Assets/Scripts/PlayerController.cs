@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
         ranged.gameObject.transform.SetParent(weaponSlot);
         sheild.gameObject.transform.SetPositionAndRotation(weaponSlot.position, weaponSlot.rotation);
         sheild.gameObject.transform.SetParent(weaponSlot);
-        SetWeapon(0);
+        CycleWeapons();
     }
 
     // Update is called once per frame
@@ -152,36 +152,46 @@ public class PlayerController : MonoBehaviour
 
         if (health == 0)
             GameOver = true;
+
     }
 
-    public void SetWeapon(int index)
+    public void SetWeapon()
     {
         Node first = new Node(1);
         first.next = new Node(2);
         first.next.next = new Node(3);
         Node last = first.next.next;
         last.next = first;
+
+
+
         if (weaponList.Search(last, 1) == true)
         {
             melee.SetActive(true);
-            StartCoroutine("Wait");
-            melee.SetActive(false);
-            Debug.Log("1");
+            StartCoroutine("Wait2");
+           melee.SetActive(false);
+            Debug.Log("weapon 1");
         }
         if (weaponList.Search(last, 2) == true)
         {
             ranged.SetActive(true);
-            StartCoroutine("Wait");
+            StartCoroutine("Wait2");
             ranged.SetActive(false);
-            Debug.Log("2");
+            Debug.Log("weapon 2");
         }
         if (weaponList.Search(last, 3) == true)
         {
             sheild.SetActive(true);
-            StartCoroutine("Wait");
+            StartCoroutine("Wait2");
             sheild.SetActive(false);
-            Debug.Log("3");
+            Debug.Log("weapon 3");
         }
+    }
+
+    public void CycleWeapons()
+    {
+       StartCoroutine("Wait");
+       SetWeapon();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -202,6 +212,17 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(2);
+        Debug.Log("YAY");
+        yield return new WaitForSeconds(1);
+    }
+
+    IEnumerator Wait2()
+    {
+        yield return new WaitForSeconds(5);
+    }
+
+    IEnumerator Wait3()
+    {
+        yield return new WaitForSeconds(5);
     }
 }

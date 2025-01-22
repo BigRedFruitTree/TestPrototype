@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class LinkedList
 {
+
     public bool Search(Node last, int key)
     {
         if (last == null)
@@ -37,8 +38,8 @@ public class LinkedList
         first.next.next = new Node(3);
         Node last = first.next.next;
         last.next = first;
-
-        Debug.Log("weapon" + weapon);
         return weapon;
     }
+
+
 }
