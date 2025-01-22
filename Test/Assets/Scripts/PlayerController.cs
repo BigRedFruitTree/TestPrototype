@@ -46,8 +46,7 @@ public class PlayerController : MonoBehaviour
     public float Ysensitivity = 2.0f;
     public float camRotationLimit = 90f;
     public bool GameOver = false;
-    private Node last;
-
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -67,7 +66,7 @@ public class PlayerController : MonoBehaviour
         ranged.gameObject.transform.SetParent(weaponSlot);
         sheild.gameObject.transform.SetPositionAndRotation(weaponSlot.position, weaponSlot.rotation);
         sheild.gameObject.transform.SetParent(weaponSlot);
-        SetWeapon(1);
+        SetWeapon(0);
     }
 
     // Update is called once per frame
@@ -157,28 +156,33 @@ public class PlayerController : MonoBehaviour
 
     public void SetWeapon(int index)
     {
+        Node first = new Node(1);
+        first.next = new Node(2);
+        first.next.next = new Node(3);
+        Node last = first.next.next;
+        last.next = first;
         if (weaponList.Search(last, 1) == true)
         {
             melee.SetActive(true);
+            StartCoroutine("Wait");
+            melee.SetActive(false);
             Debug.Log("1");
         }
         if (weaponList.Search(last, 2) == true)
         {
             ranged.SetActive(true);
+            StartCoroutine("Wait");
+            ranged.SetActive(false);
             Debug.Log("2");
         }
         if (weaponList.Search(last, 3) == true)
         {
             sheild.SetActive(true);
+            StartCoroutine("Wait");
+            sheild.SetActive(false);
             Debug.Log("3");
         }
     }
-
-    public void CycleNode()
-    {
-        
-    }
-
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -196,7 +200,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator WaitTime()
+    IEnumerator Wait()
     {
         yield return new WaitForSeconds(2);
     }

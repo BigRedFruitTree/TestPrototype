@@ -41,5 +41,4 @@ public class LinkedList
         Debug.Log("weapon" + weapon);
         return weapon;
     }
-
 }
