@@ -1,36 +1,31 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class LinkedList
 {
+    public Node head;
+    public Node current;
+    public Node first;
 
-    public bool Search(Node last, int key)
+    public int Search()
     {
-        if (last == null)
+        if(current == first)
         {
-          return false;
+            return 1;
         }
-
-        Node head = last.next;
-        Node curr = head;
-
-        while (curr != last)
+        if (current == first.next)
         {
-          if (curr.data == key)
-          {
-            return true;
-          }
-            curr = curr.next;
+            return 2;
         }
-
-        if (last.data == key)
+        if (current == first.next.next)
         {
-           return true;
+            return 3;
         }
-          return false;
+        return 0;
     }
-
-
+    //Low Taper Fade
     public int Main(int weapon)
     {
         Node first = new Node(1);
@@ -38,33 +33,26 @@ public class LinkedList
         first.next.next = new Node(3);
         Node last = first.next.next;
         last.next = first;
-        IsCircular(last);
+
         return weapon;
     }
 
-    public bool IsCircular(Node head) 
+    public void CycleWeapons()
     {
-        // If head is null, list is empty, circular
-        if (last == null) return true;
-
-        Node temp = first;
-
-        // Traverse until the end is reached or
-        // the next node equals the head
-        while (last != null && last.next != temp) 
+        while (current != null)
         {
-           last = last.next;
+            current = current.next;
+            StartCoroutine("Wait");
         }
-           
+    }
 
-        // If end reached before finding head again,
-        // list is not circular
-        if (last == null || last.next == null) 
-        {
-            Debug.Log("OH NO");
-        }
-        // If head found again, list is circular
-        Debug.Log("OH YEAH");
-        return true;
+    private void StartCoroutine(string v)
+    {
+        throw new NotImplementedException();
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(60);
     }
 }
