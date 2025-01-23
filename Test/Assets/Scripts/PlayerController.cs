@@ -169,7 +169,7 @@ public class PlayerController : MonoBehaviour
         {
             melee.SetActive(true);
             StartCoroutine("Wait2");
-           melee.SetActive(false);
+            melee.SetActive(false);
             Debug.Log("weapon 1");
         }
         if (weaponList.Search(last, 2) == true)
