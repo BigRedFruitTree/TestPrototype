@@ -25,7 +25,7 @@ public class LinkedList
         }
         return 0;
     }
-    //Low Taper Fade
+
     public int Main(int weapon)
     {
         Node first = new Node(1);
@@ -39,20 +39,9 @@ public class LinkedList
 
     public void CycleWeapons()
     {
-        while (current != null)
+        if (current != null)
         {
-            current = current.next;
-            StartCoroutine("Wait");
+           current = current.next;  
         }
-    }
-
-    private void StartCoroutine(string v)
-    {
-        throw new NotImplementedException();
-    }
-
-    IEnumerator Wait()
-    {
-        yield return new WaitForSeconds(60);
     }
 }

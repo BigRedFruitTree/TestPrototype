@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public Transform weaponSlot;
 
     private LinkedList weaponList;
+    public int timer = 0;
 
     [Header("Weapons")]
     public GameObject melee;
@@ -156,30 +157,33 @@ public class PlayerController : MonoBehaviour
         if(health > 0)
         {
             StartCoroutine("Wait");
+            ChangeWeapon();
+        }
+    }
+
+    public void ChangeWeapon()
+    {
             if(weaponList.Search() == 1)
             {
-                Debug.Log("weapon 1");
                 melee.SetActive(true);
-                StartCoroutine("Wait2");
+                StartCoroutine("Wait");
                 melee.SetActive(false);
+                Debug.Log("weapon 1");
             }
             else if(weaponList.Search() == 2)
             {
-                Debug.Log("weapon 2");
                 ranged.SetActive(true);
-                StartCoroutine("Wait2");
+                StartCoroutine("Wait");
                 ranged.SetActive(false);
-                
+                Debug.Log("weapon 2");
             }
             else if (weaponList.Search() == 2)
             {
-                Debug.Log("weapon 3");
                 sheild.SetActive(true);
-                StartCoroutine("Wait2");
+                StartCoroutine("Wait");
                 sheild.SetActive(false);
-
+                Debug.Log("weapon 3");
             }
-        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -197,13 +201,9 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
         }
     }
-
-    IEnumerator Wait()
+    public IEnumerator Wait()
     {
-        yield return new WaitForSeconds(60);
-    }
-    IEnumerator Wait2()
-    {
-        yield return new WaitForSeconds(60);
+        yield return new WaitForSeconds(100000000000);
+        GameOver = false;
     }
 }
