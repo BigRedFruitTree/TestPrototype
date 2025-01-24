@@ -6,12 +6,31 @@ using UnityEngine;
 public class LinkedList
 {
     public Node head;
-    public Node current;
     public Node first;
+    public Node current;
+
+    public int Main(int weapon)
+    {
+        Node first = new Node(1);
+        first.next = new Node(2);
+        first.next.next = new Node(3);
+        Node last = first.next.next;
+        last.next = first;
+        current = first;
+
+        return weapon;
+    }
 
     public int Search()
     {
-        if(current == first)
+        Node first = new Node(1);
+        first.next = new Node(2);
+        first.next.next = new Node(3);
+        Node last = first.next.next;
+        last.next = first;
+        current = first;
+
+        if (current == first)
         {
             return 1;
         }
@@ -26,22 +45,9 @@ public class LinkedList
         return 0;
     }
 
-    public int Main(int weapon)
-    {
-        Node first = new Node(1);
-        first.next = new Node(2);
-        first.next.next = new Node(3);
-        Node last = first.next.next;
-        last.next = first;
-
-        return weapon;
-    }
-
     public void CycleWeapons()
     {
-        if (current != null)
-        {
-           current = current.next;  
-        }
+        Debug.Log("THICK OF IT");
+        current = current.next;  
     }
 }

@@ -67,7 +67,6 @@ public class PlayerController : MonoBehaviour
         ranged.gameObject.transform.SetParent(weaponSlot);
         sheild.gameObject.transform.SetPositionAndRotation(weaponSlot.position, weaponSlot.rotation);
         sheild.gameObject.transform.SetParent(weaponSlot);
-        weaponList.CycleWeapons();
     }
 
     // Update is called once per frame
@@ -157,6 +156,7 @@ public class PlayerController : MonoBehaviour
         if(health > 0)
         {
             StartCoroutine("Wait");
+            weaponList.CycleWeapons();
             ChangeWeapon();
         }
     }
