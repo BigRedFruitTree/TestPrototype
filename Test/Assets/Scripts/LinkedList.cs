@@ -8,13 +8,14 @@ public class LinkedList
     public Node head;
     public Node first;
     public Node current;
+    public Node last;
 
     public int Main(int weapon)
     {
-        Node first = new Node(1);
+        first = new Node(1);
         first.next = new Node(2);
         first.next.next = new Node(3);
-        Node last = first.next.next;
+        last = first.next.next;
         last.next = first;
         current = first;
 
@@ -23,13 +24,6 @@ public class LinkedList
 
     public int Search()
     {
-        Node first = new Node(1);
-        first.next = new Node(2);
-        first.next.next = new Node(3);
-        Node last = first.next.next;
-        last.next = first;
-        current = first;
-
         if (current == first)
         {
             return 1;

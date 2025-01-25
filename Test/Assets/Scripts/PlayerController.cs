@@ -59,8 +59,6 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         weaponList = new LinkedList();
         weaponList.Main(1);
-        weaponList.Main(2);
-        weaponList.Main(3);
         melee.gameObject.transform.SetPositionAndRotation(weaponSlot.position, weaponSlot.rotation);
         melee.gameObject.transform.SetParent(weaponSlot);
         ranged.gameObject.transform.SetPositionAndRotation(weaponSlot.position, weaponSlot.rotation);
@@ -157,6 +155,7 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine("Wait");
             weaponList.CycleWeapons();
+            StartCoroutine("Wait");
             ChangeWeapon();
         }
     }
@@ -204,6 +203,5 @@ public class PlayerController : MonoBehaviour
     public IEnumerator Wait()
     {
         yield return new WaitForSeconds(100000000000);
-        GameOver = false;
     }
 }
