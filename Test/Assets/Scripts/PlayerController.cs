@@ -107,6 +107,13 @@ public class PlayerController : MonoBehaviour
             sprintMode = false;
         }
 
+        if (Input.GetKeyUp(KeyCode.Z))
+        {
+            StartCoroutine("Wait");
+            weaponList.CycleWeapons();
+            ChangeWeapon();
+        }
+
         if (sprintMode == true)
             stamina--;
 
@@ -150,14 +157,6 @@ public class PlayerController : MonoBehaviour
 
         if (health == 0)
             GameOver = true;
-
-        if(health > 0)
-        {
-            StartCoroutine("Wait");
-            weaponList.CycleWeapons();
-            StartCoroutine("Wait");
-            ChangeWeapon();
-        }
     }
 
     public void ChangeWeapon()
@@ -165,22 +164,22 @@ public class PlayerController : MonoBehaviour
             if(weaponList.Search() == 1)
             {
                 melee.SetActive(true);
-                StartCoroutine("Wait");
-                melee.SetActive(false);
+                ranged.SetActive(false);
+                sheild.SetActive(false);
                 Debug.Log("weapon 1");
             }
             else if(weaponList.Search() == 2)
             {
                 ranged.SetActive(true);
-                StartCoroutine("Wait");
-                ranged.SetActive(false);
+                melee.SetActive(false);
+                sheild.SetActive(false);
                 Debug.Log("weapon 2");
             }
-            else if (weaponList.Search() == 2)
+            else if (weaponList.Search() == 3)
             {
                 sheild.SetActive(true);
-                StartCoroutine("Wait");
-                sheild.SetActive(false);
+                ranged.SetActive(false);
+                melee.SetActive(false);
                 Debug.Log("weapon 3");
             }
     }
@@ -202,6 +201,7 @@ public class PlayerController : MonoBehaviour
     }
     public IEnumerator Wait()
     {
-        yield return new WaitForSeconds(100000000000);
+        yield return new WaitForSeconds(20);
+        GameOver = false;
     }
 }
