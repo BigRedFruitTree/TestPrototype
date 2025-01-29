@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     Vector2 camRotation;
     public Transform weaponSlot;
+    public GrapplingGun grGun;
 
     private LinkedList weaponList;
     public int timer = 0;
@@ -52,6 +53,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         myRB = GetComponent<Rigidbody>();
+        grGun = GameObject.Find("weapon 1").GetComponent<GrapplingGun>();
         playerCam = Camera.main;
         cameraHolder = transform.GetChild(0);
         camRotation = Vector2.zero;
@@ -107,7 +109,7 @@ public class PlayerController : MonoBehaviour
             sprintMode = false;
         }
 
-        if (Input.GetKeyUp(KeyCode.Z))
+        if (Input.GetKeyUp(KeyCode.E) && grGun.isGrappling == false)
         {
             StartCoroutine("Wait");
             weaponList.CycleWeapons();
@@ -166,21 +168,21 @@ public class PlayerController : MonoBehaviour
                 melee.SetActive(true);
                 ranged.SetActive(false);
                 sheild.SetActive(false);
-                Debug.Log("weapon 1");
+                weaponID = 1;
             }
             else if(weaponList.Search() == 2)
             {
                 ranged.SetActive(true);
                 melee.SetActive(false);
                 sheild.SetActive(false);
-                Debug.Log("weapon 2");
+                weaponID = 2;
             }
             else if (weaponList.Search() == 3)
             {
                 sheild.SetActive(true);
                 ranged.SetActive(false);
                 melee.SetActive(false);
-                Debug.Log("weapon 3");
+                weaponID = 3;
             }
     }
 

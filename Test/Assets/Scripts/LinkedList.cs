@@ -41,7 +41,6 @@ public class LinkedList
 
     public void CycleWeapons()
     {
-        Debug.Log("THICK OF IT");
         current = current.next;  
     }
 }

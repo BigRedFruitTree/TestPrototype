@@ -11,20 +11,27 @@ public class GrapplingGun : MonoBehaviour
     private float maxDistance = 100f;
     private SpringJoint joint;
 
+    public bool isGrappling = false;
+
+    public PlayerController playerController;
+
     void Awake()
     {
         lr = GetComponent<LineRenderer>();
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && playerController.weaponID == 1)
         {
             StartGrapple();
+            isGrappling = true;
         }
         else if (Input.GetMouseButtonUp(0))
         {
             StopGrapple();
+            isGrappling = false;
         }
     }
 
@@ -36,7 +43,7 @@ public class GrapplingGun : MonoBehaviour
     void StartGrapple()
     {
         RaycastHit hit;
-        if (Physics.Raycast(camera.position, camera.forward, out hit, maxDistance, whatIsGrappleable))
+        if (Physics.Raycast(camera.position, camera.forward, out hit, maxDistance, whatIsGrappleable) && playerController.weaponID == 1)
         {
             grapplePoint = hit.point;
             joint = player.gameObject.AddComponent<SpringJoint>();
@@ -69,12 +76,15 @@ public class GrapplingGun : MonoBehaviour
     void DrawRope()
     {
       
-        if (!joint) return;
+        if (!joint && playerController.weaponID == 1) return;
 
-        currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, grapplePoint, Time.deltaTime * 8f);
+        if(playerController.weaponID == 1)
+        {
+            currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, grapplePoint, Time.deltaTime * 8f);
 
-        lr.SetPosition(0, gunTip.position);
-        lr.SetPosition(1, currentGrapplePosition);
+            lr.SetPosition(0, gunTip.position);
+            lr.SetPosition(1, currentGrapplePosition);
+        }
     }
 
     public bool IsGrappling()
