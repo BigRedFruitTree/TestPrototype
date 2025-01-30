@@ -285,8 +285,8 @@ Transform:
   m_GameObject: {fileID: 196805512}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.57, y: 6.85, z: 20.26}
-  m_LocalScale: {x: 45, y: 10, z: 1}
+  m_LocalPosition: {x: 4.57, y: 3.99, z: 20.26}
+  m_LocalScale: {x: 45, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 789882875}
@@ -392,8 +392,8 @@ Transform:
   m_GameObject: {fileID: 568104446}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.57, y: 13.45, z: 36.41}
-  m_LocalScale: {x: 45, y: 25, z: 1}
+  m_LocalPosition: {x: 4.57, y: 6.74, z: 31.57}
+  m_LocalScale: {x: 45, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 789882875}
@@ -938,7 +938,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 5.42}
+  m_AnchoredPosition: {x: 0, y: 4.58}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1266025005
@@ -1702,7 +1702,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1612025242}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 7.47}
+  m_LocalPosition: {x: 0, y: 0, z: 2.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1734,8 +1734,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Good Job!\nWhen your slected weapon is the long tube-like thing,\nLeft
-    Click and Hold on a BLUE thing to grapple to it. You get pulled\nslowly, and
-    can move during it, but be careful. \nMake your way over this wall."
+    Click and Hold on A non yellow thing to grapple to it. You get pulled\nslowly,
+    and can move during it, but be careful. \nMake your way over this wall."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
