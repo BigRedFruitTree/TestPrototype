@@ -2377,6 +2377,16 @@ MonoBehaviour:
   Ysensitivity: 2
   camRotationLimit: 90
   GameOver: 0
+  playerCntrols: {fileID: -944628639613478452, guid: ba889d4fb9522b2499467f714bc1c247, type: 3}
+  moveAction:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: bfad15a9-9e39-445f-9e83-76f707c7c9ab
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!114 &2102936823
 MonoBehaviour:
   m_ObjectHideFlags: 0

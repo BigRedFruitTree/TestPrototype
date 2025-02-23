@@ -51,12 +51,13 @@ public class PlayerController : MonoBehaviour
     public bool GameOver = false;
 
     [Header("Input System")]
+    public InputActionAsset playerCntrols;
     public InputAction moveAction;
    
     // Start is called before the first frame update
     void Start()
     {
-        moveAction = InputSystem.FindAction("Move");
+        moveAction = playerCntrols.FindActionMap("Player").FindAction("Move");
         myRB = GetComponent<Rigidbody>();
         grGun = GameObject.Find("weapon 1").GetComponent<GrapplingGun>();
         playerCam = Camera.main;
