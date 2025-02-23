@@ -52,12 +52,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Input System")]
     public InputActionAsset playerCntrols;
-    private PlayerInput playerInput;
+    public InputHandler inputHandler;
     private InputAction moveAction;
-    private InputAction jumpAction;
-    private InputAction sprintAction;
-    private InputAction switchAction;
-    private InputAction fireAction;
     
 
    
@@ -65,10 +61,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         moveAction = playerCntrols.FindActionMap("Player").FindAction("Move");
-        jumpAction = playerCntrols.FindActionMap("Player").FindAction("Jump");
-        sprintAction = playerCntrols.FindActionMap("Player").FindAction("Sprint");
-        switchAction = playerCntrols.FindActionMap("Player").FindAction("Switch");
-        fireAction = playerCntrols.FindActionMap("Player").FindAction("Fire");
         myRB = GetComponent<Rigidbody>();
         grGun = GameObject.Find("weapon 1").GetComponent<GrapplingGun>();
         playerCam = Camera.main;

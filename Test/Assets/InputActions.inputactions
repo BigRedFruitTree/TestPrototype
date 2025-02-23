@@ -185,7 +185,7 @@
                 {
                     "name": "",
                     "id": "3ea4d645-4504-4529-b061-ab81934c3752",
-                    "path": "<Joystick>/stick",
+                    "path": "<XInputController>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "Joystick",
@@ -218,7 +218,7 @@
                 {
                     "name": "",
                     "id": "3e5f5442-8668-4b27-a940-df99bad7e831",
-                    "path": "<Joystick>/{Tilt}",
+                    "path": "<XInputController>/rightStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "Joystick",
@@ -262,8 +262,8 @@
                 {
                     "name": "",
                     "id": "ee3d0cd2-254e-47a7-a8cb-bc94d9658c54",
-                    "path": "<Joystick>/{PrimaryAction}",
-                    "interactions": "Press",
+                    "path": "<XInputController>/buttonSouth",
+                    "interactions": "",
                     "processors": "",
                     "groups": "Joystick",
                     "action": "Fire",
@@ -295,7 +295,7 @@
                 {
                     "name": "",
                     "id": "693bdffc-9040-4a34-9064-20d1c4452452",
-                    "path": "<Joystick>/{PrimaryTrigger}",
+                    "path": "<XInputController>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Joystick",
@@ -306,7 +306,7 @@
                 {
                     "name": "",
                     "id": "1a7011b6-5397-481d-929f-58045368ffa7",
-                    "path": "<Joystick>/{SecondaryAction}",
+                    "path": "<XInputController>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "Joystick",
@@ -339,7 +339,7 @@
                 {
                     "name": "",
                     "id": "cfe04792-3735-4f94-a233-9f8e678c1e79",
-                    "path": "<Joystick>/stick/down",
+                    "path": "<XInputController>/leftStickPress",
                     "interactions": "",
                     "processors": "",
                     "groups": "Joystick",
