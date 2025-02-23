@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 public class PlayerController : MonoBehaviour
@@ -48,10 +49,14 @@ public class PlayerController : MonoBehaviour
     public float Ysensitivity = 2.0f;
     public float camRotationLimit = 90f;
     public bool GameOver = false;
+
+    [Header("Input System")]
+    public InputAction moveAction;
    
     // Start is called before the first frame update
     void Start()
     {
+        moveAction = InputSystem.FindAction("Move");
         myRB = GetComponent<Rigidbody>();
         grGun = GameObject.Find("weapon 1").GetComponent<GrapplingGun>();
         playerCam = Camera.main;
@@ -138,8 +143,8 @@ public class PlayerController : MonoBehaviour
 
         if (sprintMode)
         {
-            temp.x = verticalMove * speed * sprintMultiplier;
-            temp.z = horizontalMove * speed * sprintMultiplier;
+           temp.x = verticalMove * speed * sprintMultiplier;
+           temp.z = horizontalMove * speed * sprintMultiplier;
         } else
         {
             temp.x = verticalMove * speed;
