@@ -52,12 +52,23 @@ public class PlayerController : MonoBehaviour
 
     [Header("Input System")]
     public InputActionAsset playerCntrols;
-    public InputAction moveAction;
+    private PlayerInput playerInput;
+    private InputAction moveAction;
+    private InputAction jumpAction;
+    private InputAction sprintAction;
+    private InputAction switchAction;
+    private InputAction fireAction;
+    
+
    
     // Start is called before the first frame update
     void Start()
     {
         moveAction = playerCntrols.FindActionMap("Player").FindAction("Move");
+        jumpAction = playerCntrols.FindActionMap("Player").FindAction("Jump");
+        sprintAction = playerCntrols.FindActionMap("Player").FindAction("Sprint");
+        switchAction = playerCntrols.FindActionMap("Player").FindAction("Switch");
+        fireAction = playerCntrols.FindActionMap("Player").FindAction("Fire");
         myRB = GetComponent<Rigidbody>();
         grGun = GameObject.Find("weapon 1").GetComponent<GrapplingGun>();
         playerCam = Camera.main;
@@ -73,11 +84,15 @@ public class PlayerController : MonoBehaviour
         ranged.gameObject.transform.SetParent(weaponSlot);
         sheild.gameObject.transform.SetPositionAndRotation(weaponSlot.position, weaponSlot.rotation);
         sheild.gameObject.transform.SetParent(weaponSlot);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        Vector2 moveValue = moveAction.ReadValue<Vector2>();
+
         playerCam.transform.position = cameraHolder.position;
 
         if (GameOver == false)

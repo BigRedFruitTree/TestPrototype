@@ -30,16 +30,34 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
-                    "name": "SwitchControls",
+                    "name": "Switch",
                     "type": "Button",
                     "id": "50e5c70f-f92f-4683-9c88-84faa82384d7",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "55e117bd-ebc3-4583-a7cf-d195853b0e78",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Sprint",
+                    "type": "Button",
+                    "id": "48ac5287-1df5-4538-8386-10ff3df490cc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -200,7 +218,7 @@
                 {
                     "name": "",
                     "id": "3e5f5442-8668-4b27-a940-df99bad7e831",
-                    "path": "<Joystick>/{Hatswitch}",
+                    "path": "<Joystick>/{Tilt}",
                     "interactions": "",
                     "processors": "",
                     "groups": "Joystick",
@@ -244,8 +262,8 @@
                 {
                     "name": "",
                     "id": "ee3d0cd2-254e-47a7-a8cb-bc94d9658c54",
-                    "path": "<Joystick>/trigger",
-                    "interactions": "",
+                    "path": "<Joystick>/{PrimaryAction}",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "Joystick",
                     "action": "Fire",
@@ -270,18 +288,62 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "SwitchControls",
+                    "action": "Switch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "693bdffc-9040-4a34-9064-20d1c4452452",
-                    "path": "<XRController>/{SecondaryAction}",
+                    "path": "<Joystick>/{PrimaryTrigger}",
                     "interactions": "",
                     "processors": "",
-                    "groups": "XR",
-                    "action": "SwitchControls",
+                    "groups": "Joystick",
+                    "action": "Switch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1a7011b6-5397-481d-929f-58045368ffa7",
+                    "path": "<Joystick>/{SecondaryAction}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "463738b9-41f1-4dd4-b440-5943c146a882",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "584ab866-d331-4b11-8c38-0699fb7dc862",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cfe04792-3735-4f94-a233-9f8e678c1e79",
+                    "path": "<Joystick>/stick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
