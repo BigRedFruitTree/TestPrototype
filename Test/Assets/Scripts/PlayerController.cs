@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         moveAction = playerCntrols.FindActionMap("Player").FindAction("Move");
+        inputHandler = InputHandler.Instance;
         myRB = GetComponent<Rigidbody>();
         grGun = GameObject.Find("weapon 1").GetComponent<GrapplingGun>();
         playerCam = Camera.main;
@@ -127,6 +128,17 @@ public class PlayerController : MonoBehaviour
             StartCoroutine("Wait");
             weaponList.CycleWeapons();
             ChangeWeapon();
+        }
+
+        if (inputHandler.SwitchTriggered)
+        {
+            if(grGun.isGrappling == false) 
+            {
+               StartCoroutine("Wait");
+               weaponList.CycleWeapons();
+               ChangeWeapon();
+            }
+           
         }
 
         if (sprintMode == true)
