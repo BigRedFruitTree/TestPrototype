@@ -506,6 +506,7 @@ MonoBehaviour:
   jump: Jump
   sprint: Sprint
   switchW: Switch
+  fire: Fire
   lookAction:
     m_Name: Look
     m_Type: 0
@@ -538,6 +539,15 @@ MonoBehaviour:
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 829d2df6-b324-4c59-8ccc-9f3e018481ff
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  fireAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: d7f326cd-f1c8-44bd-a383-2c01ec3fd02b
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
@@ -1762,6 +1772,8 @@ MonoBehaviour:
   player: {fileID: 2102936821}
   isGrappling: 0
   playerController: {fileID: 0}
+  inputHandler: {fileID: 597601321}
+  canPress: 0
 --- !u!1 &1612025242
 GameObject:
   m_ObjectHideFlags: 0
@@ -2463,7 +2475,7 @@ MonoBehaviour:
   camRotationLimit: 90
   GameOver: 0
   playerCntrols: {fileID: -944628639613478452, guid: ba889d4fb9522b2499467f714bc1c247, type: 3}
-  inputHandler: {fileID: 0}
+  inputHandler: {fileID: 597601321}
 --- !u!114 &2102936823
 MonoBehaviour:
   m_ObjectHideFlags: 0

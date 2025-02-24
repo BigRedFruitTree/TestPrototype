@@ -54,12 +54,14 @@ public class PlayerController : MonoBehaviour
     public InputActionAsset playerCntrols;
     public InputHandler inputHandler;
     private InputAction moveAction;
+    private bool canPress;
     
 
    
     // Start is called before the first frame update
     void Start()
     {
+        canPress = true;
         moveAction = playerCntrols.FindActionMap("Player").FindAction("Move");
         inputHandler = InputHandler.Instance;
         myRB = GetComponent<Rigidbody>();
@@ -107,7 +109,7 @@ public class PlayerController : MonoBehaviour
         float verticalMove = Input.GetAxisRaw("Vertical");
         float horizontalMove = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetKey(KeyCode.LeftShift) && stamina > 0)
+        if (Input.GetKey(KeyCode.LeftShift) && stamina > 0 || inputHandler.SprintTriggered && stamina > 0)
         {
             if (stamina > 0)
             {
@@ -118,7 +120,7 @@ public class PlayerController : MonoBehaviour
                 sprintMode = false;
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        if (Input.GetKeyUp(KeyCode.LeftShift) || !inputHandler.SprintTriggered)
         {
             sprintMode = false;
         }
@@ -130,15 +132,13 @@ public class PlayerController : MonoBehaviour
             ChangeWeapon();
         }
 
-        if (inputHandler.SwitchTriggered)
+        if (inputHandler.SwitchTriggered && grGun.isGrappling == false && canPress == true)
         {
-            if(grGun.isGrappling == false) 
-            {
-               StartCoroutine("Wait");
-               weaponList.CycleWeapons();
-               ChangeWeapon();
-            }
-           
+            canPress = false;
+            StartCoroutine("Wait");
+            weaponList.CycleWeapons();
+            ChangeWeapon();
+            canPress = true;
         }
 
         if (sprintMode == true)
@@ -173,8 +173,18 @@ public class PlayerController : MonoBehaviour
             
         if (Input.GetKeyDown(KeyCode.Space) && jumps > 0 && GameOver == false)
         {
+            canPress = false;
             temp.y = jumpHeight;
             jumps--;
+            StartCoroutine("Wait");
+            canPress = true;
+        }
+
+        if (inputHandler.JumpTriggered && jumps > 0 && GameOver == false)
+        {
+            temp.y = jumpHeight;
+            jumps--;
+
         }
 
         myRB.velocity = (temp.x * transform.forward) + (temp.z * transform.right) + (temp.y * transform.up);
@@ -228,7 +238,6 @@ public class PlayerController : MonoBehaviour
     }
     public IEnumerator Wait()
     {
-        yield return new WaitForSeconds(20);
-        GameOver = false;
+        yield return new WaitForSeconds(10f);
     }
 }

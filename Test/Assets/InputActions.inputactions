@@ -221,7 +221,7 @@
                     "path": "<XInputController>/rightStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Joystick;XR",
+                    "groups": "Joystick;Gamepad;XR",
                     "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -263,9 +263,9 @@
                     "name": "",
                     "id": "ee3d0cd2-254e-47a7-a8cb-bc94d9658c54",
                     "path": "<XInputController>/buttonSouth",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
-                    "groups": "Joystick",
+                    "groups": "Gamepad;Joystick",
                     "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -296,9 +296,9 @@
                     "name": "",
                     "id": "693bdffc-9040-4a34-9064-20d1c4452452",
                     "path": "<XInputController>/buttonNorth",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
-                    "groups": "Joystick;XR",
+                    "groups": "Joystick;Gamepad",
                     "action": "Switch",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -307,9 +307,9 @@
                     "name": "",
                     "id": "1a7011b6-5397-481d-929f-58045368ffa7",
                     "path": "<XInputController>/buttonWest",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
-                    "groups": "Joystick;XR",
+                    "groups": "Joystick;Gamepad",
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -342,7 +342,7 @@
                     "path": "<XInputController>/leftStickPress",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Joystick;XR",
+                    "groups": "Gamepad;Joystick",
                     "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false

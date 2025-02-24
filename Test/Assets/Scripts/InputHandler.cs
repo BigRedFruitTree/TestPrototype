@@ -13,16 +13,19 @@ public class InputHandler : MonoBehaviour
     [SerializeField] private string jump = "Jump";
     [SerializeField] private string sprint = "Sprint";
     [SerializeField] private string switchW = "Switch";
+    [SerializeField] private string fire = "Fire";
 
     [SerializeField] public InputAction lookAction;
     [SerializeField] public InputAction jumpAction;
     [SerializeField]  public InputAction sprintAction;
     [SerializeField] public InputAction switchAction;
+    [SerializeField] public InputAction fireAction;
 
     public Vector2 LookInput {get; private set;}
     public bool JumpTriggered {get; private set;}
     public bool SprintTriggered {get; private set;}
     public bool SwitchTriggered {get; private set;}
+    public bool FireTriggered {get; private set;}
 
     public static InputHandler Instance {get; private set;}
 
@@ -42,6 +45,7 @@ public class InputHandler : MonoBehaviour
         jumpAction = playerCtrls.FindActionMap(actionMapName).FindAction(jump);
         sprintAction = playerCtrls.FindActionMap(actionMapName).FindAction(sprint);
         switchAction = playerCtrls.FindActionMap(actionMapName).FindAction(switchW);
+        fireAction = playerCtrls.FindActionMap(actionMapName).FindAction(fire);
         RegisterInputActions();
     }
 
@@ -58,6 +62,9 @@ public class InputHandler : MonoBehaviour
 
         switchAction.performed += context => SwitchTriggered = true;
         switchAction.canceled += context => SwitchTriggered = false;
+
+        fireAction.performed += context => FireTriggered = true;
+        fireAction.canceled += context => FireTriggered = false;
     }
 
     public void OnEnable()
@@ -66,6 +73,7 @@ public class InputHandler : MonoBehaviour
         jumpAction.Enable();
         sprintAction.Enable();
         switchAction.Enable();
+        fireAction.Enable();
     }
 
     public void OnDisable()
@@ -74,6 +82,6 @@ public class InputHandler : MonoBehaviour
         jumpAction.Disable();
         sprintAction.Disable();
         switchAction.Disable();
+        fireAction.Disable();
     }
-
 }

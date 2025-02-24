@@ -14,21 +14,26 @@ public class GrapplingGun : MonoBehaviour
     public bool isGrappling = false;
 
     public PlayerController playerController;
+    public InputHandler inputHandler;
+
+    public bool canPress;
+
 
     void Awake()
     {
         lr = GetComponent<LineRenderer>();
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        canPress = true;
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && playerController.weaponID == 1)
+        if (Input.GetMouseButtonDown(0) && playerController.weaponID == 1 || inputHandler.FireTriggered)
         {
             StartGrapple();
             isGrappling = true;
         }
-        else if (Input.GetMouseButtonUp(0))
+        else if (Input.GetMouseButtonUp(0) || !inputHandler.FireTriggered)
         {
             StopGrapple();
             isGrappling = false;
@@ -97,4 +102,8 @@ public class GrapplingGun : MonoBehaviour
         return grapplePoint;
     }
 
+    public IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1f);
+    }
 }
